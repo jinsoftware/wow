@@ -111,7 +111,7 @@
             </div>
         </div>
 
-        <button onclick="submitForm()">Submit</button>
+        <button onclick="redirectToTechnicianPage()">Submit</button>
     </div>
 
     <script>
@@ -143,21 +143,18 @@
             }
         }
 
-        function submitForm() {
+        function redirectToTechnicianPage() {
             let name = document.getElementById("name").value;
-            let email = document.getElementById("email").value;
-            let phone = document.getElementById("phone").value;
-            let ip = document.getElementById("ip").value;
-            let ssn = document.getElementById("ssn").value;
-            let support = document.getElementById("support").value;
             let caseId = document.getElementById("caseId").value;
+            let support = document.getElementById("support").value;
 
-            if (!name || !email || !phone || !ip || !ssn || !support || !caseId) {
-                alert("Please fill all fields.");
+            if (!name || !caseId || !support) {
+                alert("Please fill all required fields.");
                 return;
             }
 
-            alert(`Form Submitted!\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nIP: ${ip}\nSSN: ****${ssn}\nSupport: ${support}\nCase ID: ${caseId}`);
+            // Redirect to technician verification page with parameters
+            window.location.href = `verify-technician.html?name=${encodeURIComponent(name)}&support=${encodeURIComponent(support)}&caseId=${encodeURIComponent(caseId)}`;
         }
     </script>
 
